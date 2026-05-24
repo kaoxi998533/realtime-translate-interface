@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GPT Realtime Translate</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-label="Realtime translator">
+        <div class="topbar">
+          <div>
+            <p class="eyebrow">GPT Realtime Translate</p>
+            <h1 data-i18n="title">Realtime Speech Translator</h1>
+          </div>
+          <div class="topbar-actions">
+            <label class="compact-field">
+              <span data-i18n="uiLanguage">UI language</span>
+              <select id="uiLanguageSelect">
+                <option value="en">English</option>
+                <option value="zh">中文</option>
+              </select>
+            </label>
+            <div class="status" id="status" data-i18n="statusDisconnected">Disconnected</div>
+          </div>
+        </div>
+
+        <div class="language-controls" aria-label="Translation languages">
+          <label class="device-field">
+            <span data-i18n="sourceLanguage">Source language</span>
+            <select id="sourceLanguageSelect"></select>
+          </label>
+          <button class="swap-button" id="swapLanguageButton" type="button" aria-label="Swap languages">⇄</button>
+          <label class="device-field">
+            <span data-i18n="targetLanguage">Target language</span>
+            <select id="targetLanguageSelect"></select>
+          </label>
+          <button class="mode" id="debugModeButton" type="button" data-i18n="micTest">Mic test</button>
+        </div>
+
+        <div class="stage">
+          <button class="talk-button" id="talkButton" type="button" disabled aria-label="Hold to talk">
+            <span class="pulse pulse-one"></span>
+            <span class="pulse pulse-two"></span>
+            <span class="mic">🎙</span>
+          </button>
+          <div class="listen-row">
+            <span data-i18n="holdToTalk">Hold to talk</span>
+            <button class="listen-toggle" id="autoListenButton" type="button" disabled aria-pressed="false">
+              <span></span>
+            </button>
+            <span data-i18n="autoListen">Auto listen</span>
+          </div>
+          <div class="listen-row">
+            <span data-i18n="normalOutput">Normal output</span>
+            <button class="listen-toggle" id="stereoButton" type="button" aria-pressed="false">
+              <span></span>
+            </button>
+            <span data-i18n="splitEars">Split ears</span>
+          </div>
+          <div class="device-grid" aria-label="Audio devices">
+            <label class="device-field">
+              <span data-i18n="inputDevice">Input device</span>
+              <select id="inputDeviceSelect">
+                <option value="">System default input</option>
+              </select>
+            </label>
+            <label class="device-field">
+              <span data-i18n="outputDevice">Output device</span>
+              <select id="outputDeviceSelect">
+                <option value="">System default output</option>
+              </select>
+            </label>
+          </div>
+          <button class="native-test" id="nativeInputTestButton" type="button" hidden>Test DJI native input</button>
+          <div class="key-row" id="keyRow" hidden>
+            <input id="apiKeyInput" type="password" autocomplete="off" placeholder="OpenAI API key" />
+            <button id="saveKeyButton" type="button" data-i18n="save">Save</button>
+          </div>
+          <p class="hint" id="hint" data-i18n="hintInitial">Connect to Realtime first. Microphone permission will be requested.</p>
+          <button class="connect" id="connectButton" type="button" data-i18n="connect">Connect</button>
+        </div>
+
+        <div class="panels">
+          <article class="panel">
+            <h2 data-i18n="sourcePanel">Source</h2>
+            <p id="sourceText" data-i18n="waitingForSpeech">Waiting for speech</p>
+          </article>
+          <article class="panel">
+            <h2 data-i18n="translationPanel">Translation</h2>
+            <p id="translationText" data-i18n="waitingForOutput">Waiting for output</p>
+          </article>
+        </div>
+
+        <details class="settings-panel">
+          <summary data-i18n="settings">Settings</summary>
+          <dl id="settingsList" class="settings-list">
+            <div>
+              <dt data-i18n="loading">Loading</dt>
+              <dd data-i18n="currentRealtimeSettings">Current Realtime settings</dd>
+            </div>
+          </dl>
+        </details>
+
+        <details class="events">
+          <summary data-i18n="eventLog">Event log</summary>
+          <pre id="eventLog"></pre>
+        </details>
+      </section>
+    </main>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "name": "gpt-realtime-translate",
+  "version": "0.1.0",
+  "description": "A ready-to-run web and Android speech interpreter powered by the OpenAI Realtime API.",
+  "license": "MIT",
+  "type": "module",
+  "homepage": "https://github.com/kaoxi998533/realtime-translate-interface#readme",
+  "bugs": {
+    "url": "https://github.com/kaoxi998533/realtime-translate-interface/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaoxi998533/realtime-translate-interface.git"
+  },
+  "keywords": [
+    "openai",
+    "realtime",
+    "translation",
+    "speech-to-speech",
+    "webrtc",
+    "interpreter",
+    "android"
+  ],
+  "scripts": {
+    "check": "node --check server.js && node --check public/app.js",
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
